@@ -8,6 +8,7 @@ namespace Application.Features.ProductFeature.Queries;
 public class GetProductByIdQuery : IRequest<Product>
 {
     public int Id { get; set; }
+
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, Product?>
     {
         private readonly IApplicationDbContext _context;

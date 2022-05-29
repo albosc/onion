@@ -1,4 +1,6 @@
 using Application;
+using Application.Filters;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.OpenApi.Models;
 using Persistence;
@@ -31,6 +33,14 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
+
+builder.Services
+    .AddMvc(options => {
+        options.EnableEndpointRouting = false;
+        options.Filters.Add<ValidationFilter>();
+    })
+    .AddFluentValidation(mvcConfiguration =>
+        mvcConfiguration.RegisterValidatorsFromAssemblyContaining<Program>());
 
 var app = builder.Build();
 

@@ -1,5 +1,8 @@
-﻿using Application.Features.ProductFeature.Commands;
-using Application.Features.ProductFeature.Queries;
+﻿using Application.Features.ProductFeature.Commands.Create;
+using Application.Features.ProductFeature.Commands.Delete;
+using Application.Features.ProductFeature.Commands.Update;
+using Application.Features.ProductFeature.Queries.GetAll;
+using Application.Features.ProductFeature.Queries.GetById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +30,8 @@ public class ProductController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(CreateProductCommand command)
     {
-        return Ok(await Mediator.Send(command));
+        var response = await Mediator.Send(command);
+        return Ok(response.Result);
     }
 
     /// <summary>

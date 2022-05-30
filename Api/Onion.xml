@@ -14,7 +14,7 @@
             
             </summary>
         </member>
-        <member name="M:Api.Controllers.ProductController.Create(Application.Features.ProductFeature.Commands.CreateProductCommand)">
+        <member name="M:Api.Controllers.ProductController.Create(Application.Features.ProductFeature.Commands.Create.CreateProductCommand)">
             <summary>
             Creates a product.
             </summary>
@@ -41,7 +41,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Api.Controllers.ProductController.Update(System.Int32,Application.Features.ProductFeature.Commands.UpdateProductCommand)">
+        <member name="M:Api.Controllers.ProductController.Update(System.Int32,Application.Features.ProductFeature.Commands.Update.UpdateProductCommand)">
             <summary>
             
             </summary>

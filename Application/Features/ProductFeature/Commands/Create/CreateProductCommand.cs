@@ -1,16 +1,12 @@
-﻿using Application.Interfaces;
-using Domain.Entities;
-using MediatR;
+﻿using MediatR;
 
-namespace Application.Features.ProductFeature.Commands;
+namespace Application.Features.ProductFeature.Commands.Create;
 
 /// <summary>
 /// Defines a request for creating a product.
 /// </summary>
-public class CreateProductCommand : IRequest<int>
+public class CreateProductCommand : IRequest<ResponseWrapper>
 {
-    #region DTO
-
     /// <summary>
     /// Name of the product.
     /// </summary>
@@ -30,12 +26,4 @@ public class CreateProductCommand : IRequest<int>
     /// Rate of the product.
     /// </summary>
     public decimal Rate { get; set; }
-
-    #endregion
-
-    #region Handler
-
-   
-
-    #endregion
 }

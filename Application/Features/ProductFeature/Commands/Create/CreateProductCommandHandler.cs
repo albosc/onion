@@ -2,12 +2,12 @@
 using Domain.Entities;
 using MediatR;
 
-namespace Application.Features.ProductFeature.Commands;
+namespace Application.Features.ProductFeature.Commands.Create;
 
 /// <summary>
 /// Defines a handler for a create product command.
 /// </summary>
-public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
+public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ResponseWrapper>
 {
     /// <summary>
     /// Database context.
@@ -23,7 +23,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
     }
 
     /// <inheritdoc/>
-    public async Task<int> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+    public async Task<ResponseWrapper> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
         var product = new Product
         {
@@ -35,6 +35,6 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
 
         await _context.Products.AddAsync(product, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
-        return product.Id;
+        return new ResponseWrapper(product.Id);
     }
 }
